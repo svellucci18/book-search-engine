@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Jumbotron,
-  Container,
-  CardColumns,
-  Card,
-  Button,
-} from 'react-bootstrap';
-
+import { Jumbotron, Container, CardColumns, Card, Button } from 'react-bootstrap';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 import { REMOVE_BOOK } from '../utils/mutations';
@@ -16,6 +9,7 @@ import Auth from '../utils/auth';
 
 const SavedBooks = () => {
   const { loading, data } = useQuery(QUERY_ME);
+  // eslint-disable-next-line
   const [removeBook, { error }] = useMutation(REMOVE_BOOK);
 
   const userData = data?.me || {};
@@ -30,6 +24,7 @@ const SavedBooks = () => {
     }
 
     try {
+      // eslint-disable-next-line
       const { data } = await removeBook({
         variables: { bookId },
       });
